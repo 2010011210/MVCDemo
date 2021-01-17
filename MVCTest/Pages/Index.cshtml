@@ -1,0 +1,24 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <div class="display-4" id="apiname"></div>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $.ajax({
+        url: "http://localhost:55047/weatherforecast/GetName",
+        type: 'get',
+        success: function (data, options) {
+            console.log(data);
+            debugger;
+            $("#apiname").val(data);
+            $("#apiname").html(data);
+        }
+    })
+</script>
